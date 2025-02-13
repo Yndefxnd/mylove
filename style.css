@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+
+body {
+  background: linear-gradient(to bottom, #ffe6f2, #fdd); /* Нежный градиент */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Merriweather", serif;
+  font-weight: 300;
+  font-style: normal;
+  overflow: hidden;
+  color: #555; /* Более темный цвет текста */
+
+}
+
+/* Импортируем шрифт */
+@import url('https://fonts.googleapis.com/css2?family=Cursive&display=swap');
+
+
+.container {
+  position: relative;
+  width: 400px; /* Увеличиваем размер для лучшей читаемости */
+  height: 300px;
+}
+
+/* Анимация сердца */
+
+
+
+
+.heart {
+  position: absolute;
+  content: "";
+  top: 30px;
+  right: 150px;
+  width: 80px;
+  height: 70px;
+  background-color: #e57373; /* Более насыщенный красный */
+  display: inline-block;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень для объема */
+  transform: rotate(-45deg);
+}
+
+.heart::before,
+.heart::after {
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  background-color: #e57373;
+}
+
+.heart::before {
+  top: -40px;
+  left: 0;
+}
+
+.heart::after {
+  left: 40px;
+  top: 0;
+}
+
+/* Конверт */
+.envelope-wrapper {
+  position: relative;
+  width: 320px;
+  height: 220px; /* Увеличиваем размер конверта */
+  margin: 0 auto; /* Центрируем конверт */
+}
+
+.envelope {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f8bbd0; /* Нежно-розовый конверт */
+  clip-path: polygon(0 0, 100% 0, 50% 80%, 0 0);
+  transition: clip-path 1s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Плавная анимация */
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Изначально открываем конверт */
+.envelope {
+  clip-path: polygon(0 0, 100% 0, 50% 0, 0 0); /* Открываем конверт */
+}
+
+
+/* Письмо */
+.letter {
+  position: absolute;
+  top: 40px;
+  width: 350px;
+  height: 400px; /* Увеличиваем высоту письма */
+  background-color: #fff;
+  padding: 15px; /* Увеличиваем отступы */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10; /* Помещаем письмо над конвертом */
+  opacity: 1; /* Отображаем письмо изначально */
+  transform: translateY(0);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Плавные переходы */
+}
+
+.letter.expanded {
+            width: 500px;
+            height: 200px;
+            background-color: lightgreen;
+        }
+
+.letter .text {
+  font-size: 16px; /* Увеличиваем размер текста */
+  line-height: 1.5;
+  margin-bottom: 15px; /* Увеличиваем отступ */
+  position: relative;
+  animation: flyInText 1.2s forwards;
+  animation-delay: 0.8s; /* Сокращаем задержку */
+  opacity: 0;
+}
+
+.letter img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  animation: flyInImage 1.2s forwards;
+  animation-delay: 1.2s; /* Сокращаем задержку */
+  opacity: 0;
+  border-radius: 5px; /* Скругляем углы картинки */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень для картинки */
+}
+
+@keyframes flyInText {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flyInImage {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Стили для элегантности */
+.letter, .envelope {
+  border-radius: 15px; /* Более сильное скругление углов */
+}
+
+/* Адаптивные стили (для телефонов) */
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+    height: auto;
+  }
+
+  .heart {
+    top: 20px;
+    width: 60px;
+    height: 50px;
+  }
+
+  .heart::before,
+  .heart::after {
+    height: 60px;
+    width: 60px;
+  }
+
+  .heart::before {
+    top: -30px;
+  }
+
+  .heart::after {
+    left: 30px;
+    top: 0;
+  }
+
+  .envelope-wrapper {
+    width: 80%;
+  }
+
+  .letter {
+    width: 70%;
+    left: 15%;
+    top: 30px;
+  }
+}
+
+.love_text {
+  font-size: 14px;
+  text-align: center; /* Центрируем текст */
+  margin-bottom: 10px; /* Добавляем отступ снизу */
+  opacity: 0; /* Скрываем текст изначально */
+  animation: flyInText 1.2s forwards; /* Применяем анимацию */
+  animation-delay: 0.4s; /* Задержка анимации (можно настроить) */
+  color: #777; /* Более приглушенный цвет */
+}
