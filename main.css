@@ -1,0 +1,400 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Comfortaa", sans-serif;
+    background: linear-gradient(135deg, #fff0f7 0%, #ffe6f9 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+}
+
+/* Фоновые элементы */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Эффект мерцающих частиц */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.particle {
+    position: absolute;
+    background-color: rgba(255, 182, 193, 0.6);
+    border-radius: 50%;
+    filter: blur(1px);
+    animation: particle-animation 15s infinite linear;
+}
+
+@keyframes particle-animation {
+    0% {
+        transform: scale(0) translate(0, 0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2) translate(100px, -100px);
+        opacity: 0;
+    }
+}
+
+/* Градиентный фон с анимацией */
+.gradient-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ffb6c1, #ff85a2, #ff69b4, #da70d6, plum, #ffc0cb);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+    opacity: 0.3;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Анимированные фоновые элементы */
+.bg-element {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+/* Основной контейнер */
+.container {
+    text-align: center;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3), 
+                0 0 30px rgba(255, 255, 255, 0.5);
+    max-width: 80%;
+    position: relative;
+    z-index: 10;
+    animation: fadeIn 2s ease;
+    border: 1px solid rgba(255, 182, 193, 0.5);
+}
+
+.march {
+    font-family: 'Great Vibes', cursive;
+}
+
+h1 {
+    color: #ff69b4;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    color: #8e5f7f;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.signature {
+    font-style: italic;
+    color: #b565a7;
+    font-size: 1.7rem;
+    text-align: right;
+    margin-top: 2rem;
+}
+
+.heart {
+    color: #ff1493;
+    display: inline-block;
+    font-size: 1.5rem;
+    animation: pulse 1.5s infinite;
+}
+
+.ribbon {
+    color: #b565a7;
+    font-size: 2rem;
+    margin-left: 0.5rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.button {
+    display: inline-block;
+    background: linear-gradient(to right, #ff69b4, #b565a7);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(181, 101, 167, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.button-no {
+    display: inline-block;
+    background: linear-gradient(to right, #ff69b4, #b565a7);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    position: absolute;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(181, 101, 167, 0.4);    
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.button:hover {
+    transform: translateY(-9px);
+    transform: rotate(-5deg) scale(1.05);
+    box-shadow: 0 15px 40px rgba(255, 105, 135, 0.4);
+    background: linear-gradient(to right, #ff5ba7, #a34d96);
+}
+
+.button-no:hover {
+    transform: translateY(9px);
+    transform: rotate(5deg) scale(1.05);
+    box-shadow: 0 15px 40px rgba(255, 105, 135, 0.4);
+    background: linear-gradient(to right, #ff5ba7, #a34d96);
+}
+
+
+    
+
+/* Модальное окно */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    overflow-y: auto;
+}
+
+.modal {
+    background: linear-gradient(135deg, #fff0f7 0%, #fff5fa 100%);
+    border-radius: 20px;
+    padding: 1rem;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 30px rgba(255, 105, 180, 0.3);
+    position: relative;
+    animation: modalOpen 0.5s forwards;
+    border: 1px solid rgba(255, 182, 193, 0.5);
+    margin: 20px auto;
+}
+
+@keyframes modalOpen {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #ff69b4;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.close-modal:hover {
+    transform: scale(1.2);
+    background: rgba(255, 255, 255, 1);
+}
+
+.modal-content {
+    text-align: center;
+}
+.modal-content p {
+
+}
+
+.modal-title {
+    color: #ff1493;
+    font-size: 2rem;
+    margin-top: 20px;
+}
+
+/* Фотогалерея в виде сердца */
+.photo-gallery {
+    margin: 30px auto;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heart-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+    margin: 0 auto;
+    width: fit-content;
+    max-width: 100%;
+}
+
+/* Изменения для бантика на фотографии */
+.photo-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    overflow: visible; /* Меняем на visible, чтобы бантик был виден целиком */
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+    animation: photo-float 6s ease-in-out infinite;
+    transform-origin: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.photo-container:hover {
+    transform: scale(1.1) !important;
+    z-index: 20;
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+}
+
+/* Разные задержки для фотографий */
+.photo-container:nth-child(3n+1) { animation-delay: 0s; }
+.photo-container:nth-child(3n+2) { animation-delay: 1s; }
+.photo-container:nth-child(3n+3) { animation-delay: 2s; }
+
+@keyframes photo-float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+
+.photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    border: 3px solid white;
+    overflow: hidden; /* Добавляем overflow: hidden к самой фотографии */
+}
+
+.photo-container:hover .photo {
+    transform: scale(1.05);
+}
+
+.photo-ribbon {
+    position: absolute;
+    top: -20px; /* Поднимаем выше */
+    right: -15px;
+    font-size: 2rem;
+    transform: rotate(15deg);
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+    z-index: 10; /* Увеличиваем z-index, чтобы он был над всеми элементами */
+    animation: ribbon-wave 3s ease-in-out infinite;
+}
+@keyframes ribbon-wave {
+    0% { transform: rotate(15deg); }
+    50% { transform: rotate(25deg); }
+    100% { transform: rotate(15deg); }
+}
+
+.gallery-title {
+    color: #b565a7;
+    margin: 30px 0 20px;
+    font-size: 1.8rem;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.gallery-title::before,
+.gallery-title::after {
+    content: '💕';
+    margin: 0 10px;
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+/* Стили для пустых ячеек */
+.empty-cell {
+    visibility: hidden;
+}
+
+/* Декоративные элементы для фона */
+@keyframes floatHeart {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes floatFlower {
+    0% { transform: translateY(0) rotate(0deg) scale(1); }
+    50% { transform: translateY(-15px) rotate(5deg) scale(1.05); }
+    100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+
+.text {
+    font-size: 24px;
+}
+
